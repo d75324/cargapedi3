@@ -1,5 +1,6 @@
 from django.db import models
 from decimal import Decimal
+from django.contrib.auth.models import User
 
 # factor para calcular el valor del IVA de acuerdo al tipo
 FACTOR_IVA = {
@@ -23,11 +24,12 @@ class Product(models.Model):
         return self.sku
 
 class Customer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='customer', default=1)
     name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(max_length=10, default=1)
+    phone_number = models.IntegerField(default=0)
     company_name = models.CharField(max_length=30)
-    company_tax_id = models.IntegerField(max_length=10, default=1)
+    company_tax_id = models.IntegerField(default=0)
 
 class Salesperson(models.Model):
     name = models.CharField(max_length=30, default=1)
