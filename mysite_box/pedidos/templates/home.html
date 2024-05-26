@@ -1,20 +1,43 @@
-<h3>Home</h3>
-<h4>Hola Usuario</h4>
-<p>Aqui podrás cargar un Pedido o un nuevo Cliente</p>
-<hr>
-<div class="container">
-    <br>
-      <center>
-        
-        <button type="button" class="btn btn-primary">
-          <a href="{% url 'pedidos' %}">Pedidos</a>
-        </button>
+{% extends 'base.html' %}
 
-        <button type="button" class="btn btn-primary">
-            <a href="{% url 'customers' %}">Customers</a>
-        </button>
-      
-      </center>
-      <br>
+{% block content %}
+
+{% if user.is_authenticated %}
+  <div class="col-md-8 offset-md-2">
+    <br>
+    <br>
+    <h4>Hola {{ user.username }}</h4>
+      <p>Aqui podrás cargar un Pedido o un nuevo Cliente</p>
+        <div class="container">
+            <br>
+            <center>
+            <a href="{% url 'pedidos' %}" class="btn btn-primary">Nuevo Pedido</a>
+            <a href="{% url 'customers' %}" class="btn btn-primary">Nuevo Cliente</a>
+            </center>
+            <br>
+        </div>
+      <hr>
   </div>
-  <hr>
+
+  {% else %}
+  <div class="col-md-8 offset-md-2">
+    <br>
+    <h2>Todo Comienza Aqui</h2>
+    <br>
+    <form method="POST" action="{% url 'home' %}">
+      {% csrf_token %}
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" name="username", placeholder="Usuario" required>
+        </div><br>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password", placeholder="Password" required>
+        </div><br>
+        <button type="submit" class="btn btn-secondary">Login</button>
+      </form>
+    </form>
+  </div>
+    
+  {% endif %}
+
+{% endblock %}
