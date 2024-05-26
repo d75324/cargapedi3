@@ -13,7 +13,12 @@ def customers(request):
         form = form_customers(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success_url')  # Redirige a una página de éxito o a la lista de clientes
+            return redirect('pedidos')  # Redirige a pedidos para cargar un pedido.
     else:
         form = form_customers()
     return render(request, 'customers.html', {'form': form})
+
+def customer_list_view(request):
+    customers = Customer.objects.all()
+    context = {'customers': customers}
+    return render(request, 'pedidos.html', context)

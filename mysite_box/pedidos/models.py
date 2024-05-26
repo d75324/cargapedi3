@@ -25,9 +25,9 @@ class Product(models.Model):
 class Customer(models.Model):
     name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(max_length=10)
+    phone_number = models.IntegerField(max_length=10, default=1)
     company_name = models.CharField(max_length=30)
-    company_tax_id = models.IntegerField(max_length=10)
+    company_tax_id = models.IntegerField(max_length=10, default=1)
 
 class Salesperson(models.Model):
     name = models.CharField(max_length=30, default=1)

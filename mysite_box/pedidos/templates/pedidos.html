@@ -1,8 +1,38 @@
 <h3>Pedidos</h3>
 
+
 <p>Cargar pedido acá</p>
 
-<hr>
-    <button type="button" class="btn btn-primary">
-        <a href="{% url 'home' %}">Back Home</a>
-    </button>
+<div class="container">
+  <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Telefono</th>
+          <th>Empresa</th>
+          <th>CUIT</th>        
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+          <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone_number }}</td>
+            <td>{{ customer.company_name }}</td>
+            <td>{{ customer.company_tax_id }}</td>          
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+  <button type="button" class="btn btn-primary">
+      <a href="{% url 'home' %}">Back Home</a>
+  </button>
+
+
+
+

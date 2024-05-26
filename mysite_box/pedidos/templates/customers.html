@@ -1,6 +1,32 @@
 <h3>Customers</h3>
-<h4>Crear un nuevo Cliente</h4>
 
+<div class="container">
+    <h3>Crear un nuevo Cliente</h3>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Nombre:</label>
+            {{ form.name }}
+        </div><br>
+        <div class="form-group">
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        </div><br>
+        <div class="form-group">
+            <label for="id_phone_number">Teléfono:</label>
+            {{ form.phone_number }}
+        </div><br>
+        <div class="form-group">
+            <label for="id_company_name">Nombre Empresa:</label>
+            {{ form.company_name }}
+        </div><br>
+        <div class="form-group">
+            <label for="id_company_tax_id">CUIT:</label>
+            {{ form.company_tax_id }}
+        </div><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 
 <hr>
     <button type="button" class="btn btn-primary">
