@@ -13,7 +13,7 @@ class Product(models.Model):
     VAT_TYPE_CHOICES = (
     ('standard', '21%'),
     ('reduced', '10,5%'),
-    ('zero', 'SIN IVA'),
+    ('zero', 'Sin IVA'),
     )
     sku = models.CharField(max_length=10, unique=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -63,7 +63,7 @@ class Order(models.Model):
 class OrderLine(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField
+    quantity = models.PositiveIntegerField()
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, editable=False)
     vat_type = models.CharField(max_length=100, choices=Product.VAT_TYPE_CHOICES, default='standard')
 
