@@ -94,3 +94,11 @@ class OrderNumber(models.Model):
 
     def __str__(self):
         return self.number
+
+class OrderNumber2(models.Model):
+    last_number = models.IntegerField(default=0)
+
+    def increment(self):
+        self.last_number += 1
+        self.save()
+        return self.last_number

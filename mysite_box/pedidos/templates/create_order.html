@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Crear Pedido</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="card p-3 mb-4">
+      <h4>Datos del Pedido</h4>
+      {{ order_form.as_p }}
+    </div>
+    <hr>
+    <div class="card p-3 mb-4 border border-light shadow-sm">
+      <h5 class="mb-3">Datos del Pedido</h5>
+      <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+          <label for="id_customer" class="form-label fw-semibold">Cliente</label>
+          {{ order_form.customer }}
+        </div>
+        <div class="col-md-6">
+          <label for="id_salesperson" class="form-label fw-semibold">Vendedor</label>
+          {{ order_form.salesperson }}
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="card p-3 mb-4">
+      <h4>Productos</h4>
+      {{ formset.management_form }}
+      {% for form in formset %}
+        <div class="border p-3 mb-3 rounded">
+          {{ form.as_p }}
+        </div>
+      {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Pedido</button>
+  </form>
+</div>
+{% endblock %}
