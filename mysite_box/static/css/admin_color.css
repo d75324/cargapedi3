@@ -1,0 +1,51 @@
+/* static/css/admin_color.css para cambiar los colores del backend */
+
+/* Color del header */
+#header {
+    background: #2c3e50;  /* Azul oscuro */
+    color: #ecf0f1;
+}
+
+/* Color de botones */
+.button, input[type=submit], input[type=button], .submit-row input {
+    background: #3498db;  /* Azul */
+    color: white;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: #2980b9;  /* Azul más oscuro */
+}
+
+/* Color de enlaces */
+a:link, a:visited {
+    color: #3498db;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* Color de títulos */
+.module h2, .module caption, .inline-group h2 {
+    background: #34495e;  /* Gris azulado */
+    color: #ecf0f1;
+}
+
+/* Cambiar fondo de la página */
+body {
+    background: #f5f7fa;
+}
+
+/* Cambiar colores de la sidebar */
+#user-tools a {
+    color: #ecf0f1 !important;
+}
+
+/* Botón de eliminar rojo */
+.deletelink {
+    background: #e74c3c;
+}
+
+.deletelink:hover {
+    background: #c0392b;
+}
