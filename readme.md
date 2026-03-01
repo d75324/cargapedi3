@@ -1,3 +1,9 @@
+01-03-2026 - Creo la aplicación accounts para centralizar en manejo de usuarios, registro por email, pero SIGUE SIN FUNCIONAR!
+
+También está instalado Jazzmin. Están comentadas en settings.py las lineas por pruebas con el admin por defecto...
+
+## NO ANDA ##
+
 Pruebas de configuración en el backend
 VER en How-to-do:
 *** Tips para personalizar el backend ***
@@ -14,14 +20,6 @@ El formulario (en home.html) está intentando hacer login, pero **no está verif
 
 ## **Problemas en tu formulario:**
 
-### **1. Formularios anidados (ERROR GRAVE)**
-Tienes `<form>` dentro de `<form>`:
-```html
-<form method="POST" action="{% url 'home' %}">
-  <!-- form anidado incorrecto -->
-  <form>  <!-- ← ESTO ESTÁ MAL -->
-```
-
 ### **2. Falta la vista de autenticación**
 El formulario envía a `{% url 'home' %}`, pero necesitas una vista que procese el login.
 
@@ -31,8 +29,7 @@ Para que funcione contra la tabla `User`, necesitas usar Django's `authenticate(
 ## **Solución Correcta:**
 
 ### **Paso 1: Crear la vista de login**
-```python
-# views.py
+# en views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages

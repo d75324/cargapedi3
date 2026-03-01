@@ -5,4 +5,5 @@ from pedidos.admin import admin_site  # importo mi instancia para presonalizar e
 urlpatterns = [
     path('admin/', admin_site.urls),
     path('', include('pedidos.urls')),
+    path('accounts/', include('allauth.urls')),
 ]

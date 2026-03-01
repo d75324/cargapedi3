@@ -2,7 +2,9 @@ asgiref==3.8.1
 crispy-bootstrap5==2024.10
 distlib==0.3.9
 Django==5.0.4
+django-allauth==65.14.3
 django-crispy-forms==2.3
+django-jazzmin==3.0.3
 filelock==3.16.1
 pillow==11.0.0
 platformdirs==4.3.6

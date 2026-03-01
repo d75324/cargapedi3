@@ -5,8 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.forms import modelformset_factory
 
-
-
 def home(request):
     # chequear que estoy logueado
     if request.method == 'POST':
@@ -26,7 +24,44 @@ def home(request):
 
 
 def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        # Autenticar contra la base de datos de Django
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            # Login exitoso
+            login(request, user)
+            messages.success(request, f'¡Bienvenido {username}!')
+            return redirect('pedidos')  # Redirige a donde quieras
+        else:
+            # Login fallido
+            messages.error(request, 'Usuario o contraseña incorrectos')
+            return redirect('login')  # Vuelve al formulario
+    
+    # Si es GET, muestra el formulario
+    return render(request, 'login.html')
+
+
+
+def login_view(request):
     pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def logout_user(request):
